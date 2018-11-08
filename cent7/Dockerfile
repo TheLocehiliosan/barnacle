@@ -25,7 +25,7 @@ RUN yum -y install python-pip python-devel python34-pip python34-devel vim iprou
 RUN pip install 'setuptools>12'
 
 RUN pip install -r /dev_python27.txt
-RUN pip3 install -r /dev_python34.txt
+# RUN pip3 install -r /dev_python34.txt
 
 # Install pudb, get rid of welcome message, and turn on line numbers
 RUN pip install pudb
@@ -40,5 +40,8 @@ ENV LC_ALL=en_US.UTF-8
 
 RUN test -e /tmp || ln -s /var/tmp /tmp
 RUN mkdir -p /etc/salt /srv/salt
+
+RUN yum -y install python-pygit2
+RUN pip install GitPython
 
 VOLUME /testing
